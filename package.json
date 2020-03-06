@@ -4,14 +4,20 @@
   "description": "simple counter with electron js ![Screenshot](sc.png)",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
   },
   "author": "undercover",
   "license": "GPL-3.0-or-later",
   "dependencies": {
     "bootstrap": "^4.3.1",
+    "electron": "^8.1.0",
     "jquery": "^3.4.1",
+    "onoff": "^5.0.1",
     "popper.js": "^1.15.0",
     "vazir-font": "^20.1.0"
+  },
+  "devDependencies": {
+    "electron-rebuild": "^1.10.0"
   }
 }
