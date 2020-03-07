@@ -10,11 +10,12 @@ const createWindow = () => {
         height : 600,
         webPreferences: {
             nodeIntegration: true
-        }
+        },
+        fullscreen: true
 
     })
     window.loadURL(`file://${__dirname}/index.html`)
-    window.webContents.openDevTools()
+    //window.webContents.openDevTools()
 
 } 
 
