@@ -4,14 +4,15 @@
   "description": "simple counter with electron js ![Screenshot](sc.png)",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron ."
+    "postinstall": "electron-builder install-app-deps",
+    "start": "electron .",
+    "dist:linux": "electron-builder --linux"
   },
-  "author": "undercover",
+
+  "author": "Sven Sura <svensura@germanscreens.de>",
   "license": "GPL-3.0-or-later",
   "dependencies": {
     "bootstrap": "^4.3.1",
-    "electron": "^8.1.0",
     "jquery": "^3.4.1",
     "onoff": "^5.0.1",
     "popper.js": "^1.15.0",
@@ -19,6 +20,18 @@
   },
   "devDependencies": {
     "electron-builder": "^22.4.0",
-    "electron-rebuild": "^1.10.0"
+    "electron-rebuild": "^1.10.0",
+    "electron": "^8.1.0"
+  },
+  "build": {
+    "appId": "de.germanscreens.counterapp",
+    "linux": { 
+      "target": { 
+        "target": "deb", 
+        "arch": "armv7l" }, 
+        "category": "Development" }, 
+        "deb": { 
+          "fpm": [ "--architecture", "armhf" ] 
+    }
   }
 }
