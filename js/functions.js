@@ -2,6 +2,7 @@
 
 
 const $ = jQuery = require('jquery')
+const remote = require("electron").remote;
 var Gpio = require('onoff').Gpio; //include onoff to interact with the GPIO
 var pushButton = new Gpio(23, 'in', 'falling', {debounceTimeout: 50}); //use GPIO pin 17 as input, and 'both' button presses, and releases should be handled
 
@@ -45,15 +46,14 @@ $(document).ready(function(){
         dec()
     })
     
-    $(document).on('keypress', function(e) {
-        console.log('KEY: ', e.which)
-    })
-
-    $(document).on('keypress', function(e) {
-        console.log('KEY: ', e.which)
-    })
+    // $(document).on('keypress', function(e) {
+    //     console.log('KEY: ', e.which)
+    // })
 
 
+
+
+    // Button_ressed Function
     pushButton.watch(function (err, value) { //Watch for hardware interrupts on pushButton GPIO, specify callback function
         if (err) { //if an error
           console.error('There was an error', err); //output error message to console
@@ -61,8 +61,18 @@ $(document).ready(function(){
         }
         inc()
     });
-      
+    
+    // Listener for FullscfreenOff at Escape_KeyPressed
+    document.addEventListener("keydown", event => {
 
+        switch (event.key) {
+            case "Escape":
+                if (remote.getCurrentWindow().isFullScreen()) {
+                    remote.getCurrentWindow().setFullScreen(false);
+                }
+                break;
+             }
+    });
 
 
 })
